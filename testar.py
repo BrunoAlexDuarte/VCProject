@@ -25,43 +25,15 @@ palavras = ["WEDNESDAY","DAYS","MONDAY","JANUARY","AUGUST","WINTER","AUTUMN","TH
             "MARCH","OCTOBER","MAY","APRIL","FRIDAY","TUESDAY","SUNDAY","MONTHS","YEAR",
             "FEBRUARY","DECEMBER","WEEK", "AMANDA"];
 
-palavras_acabadas = [];
-
-def calibra_camera():
-    print("A calibrar a câmera")
-
-
-def obtem_sopa():
-    #Inicializa a variável de retorno
-    sopa = [];
-    print("A obter a sopa")
-    img = cv2.imread("SopaDeLetras.png", cv2.IMREAD_UNCHANGED)
-    cv2.imshow("IMAGEM", img)
-    cv2.waitKey(0);
-
-    return sopa;
-
+palavras_acabadas = []
 
 def inicializa_dicionário(palavras):
-    #Inicializa variável de retorno
     palavras_dict = {};
-    
-    #Para cada palavra guardamos o seu comprimento e um dicionário com a correspondência
-     #Entre as letras das quais estamos à procura e em qual posição do tabuleiro e da palavra estão
     for palavra in palavras:
         pal_size = len(palavra);
-
-
-        #Terei um dicionario com as letras que quero
-        #Correspondente a cada letra terei a palavra que quer a letra, a posicao na palavra, 
-        #E a direção na qual a palavra está a ir (frente, baixo tras, baixo, frente baixo), bem como se é pelo sentido normal ou ao contrário
         dict_letras = {};
-        #letras_pontas = (palavra[0], palavra[-1])
         palavras_dict[palavra] = (dict_letras);
-
     return palavras_dict;
-
-
 
 def adiciona_pedidas(letras_dict, palavra, pos_sopa, direcao, sentido, pos_letra):
     #Letras_dict -> dicionario com as posicoes e as letras pedidas para cada posicao
@@ -86,8 +58,11 @@ def adiciona_pedidas(letras_dict, palavra, pos_sopa, direcao, sentido, pos_letra
 def atualiza_palavras(palavras_dict, letra, pos_letra):
     #Para cada palavra
     for (palavra, letras_pedidas) in palavras_dict.items():
+        #print("LETRAS PEDIDAS:", letras_pedidas)
+
         #Vou buscar a lista de palavras que passariam naquela posição
         letras_para_pos = letras_pedidas.get(pos_letra);
+
         #Caso existam
         if letras_para_pos is not None:
             letras_para_pos = letras_pedidas.pop(pos_letra) 
@@ -98,12 +73,16 @@ def atualiza_palavras(palavras_dict, letra, pos_letra):
                  #Sentido -> Diz se estamos a ir de trás para a frente ou normal; Autal -> Posição da letra que pedimos atual
                 (letra_pedida, direcao, sentido, atual_letra_pos) = letra_para_pos 
                 if letra_pedida == letra: #No caso de a letra na posição ser a que queríamos
+
                     adiciona_pedidas(letras_pedidas, palavra, pos_letra, direcao, sentido, atual_letra_pos)
+                    #print("A letra dá jeito")
+                #CASO A LETRA NÂO NOS INTERESSE NÃO FAZEMOS NADA
         #AGORA VEMOS SE É UMA DAS EXTREMIDADES 
         frente = (1,0)
         frente_baixo = (1,1)
         baixo = (0,1)
         baixo_tras = (1,-1)
+        #SE A LETRA FOR A PRIMEIRA
         if letra == palavra[0]:
             sentido = 1;
             atual_letra_pos = 0;
@@ -122,45 +101,16 @@ def atualiza_palavras(palavras_dict, letra, pos_letra):
             adiciona_pedidas(letras_pedidas, palavra, pos_letra, baixo, sentido, atual_letra_pos)
             adiciona_pedidas(letras_pedidas, palavra, pos_letra, baixo_tras, sentido, atual_letra_pos)
 
-def resolve_sopa(sopa, lista_palavras):
-    #Inicializa variável de retorno
-    palavras_pos = [];
-
-    #Inicilizar já as variáveis que serão constantes
-    cols = len(sopas);
-    linhas = len(sopas[0]);
-
-    #Inicializar variáveis que serão usadas
-     #Adicionamos ao dicionário as palavras
-    palavras_dict = inicializa_dicionário(lista_palavras)
-
-    #Loop para passarmos por todas as letras
-    for x in range(cols):
-        for y in range(linhas):
-            letra = sopa[x][y];
-            atualiza_palavras(palavras_dict, letra, (x,y));
-
-            #Verifica se a letra adiciona progresso 
-            #Caso sim, marca a proxima letra como passada
-            #Caso não, elimina o progresso daquela letra naquele sentido
-
-
-    
-
-
-    return palavras;
-
 
 def testar_funcs():
     global palavas, sopa, palavras_acabadas
-    dict_palavras = inicializa_dicionário(palavras)
-  #  dict_palavras = inicializa_dicionário([
-  #      "FRIDAY", 
-  #      "TUESDAY", 
-  #      "MONDAY", 
-  #      "WEEK",
-  #      "DECEMBER"
-  #      ])
+    dict_palavras = inicializa_dicionário([
+        "FRIDAY", 
+        "TUESDAY", 
+        "MONDAY", 
+        "WEEK",
+        "DECEMBER"
+        ])
     print(dict_palavras)
     for l in range(len(sopa)):
         for j in range(len(sopa[0])):
@@ -172,9 +122,7 @@ def testar_funcs():
         #    pprint(dict_palavras)
     print("PALAVRAS ACABADAS",palavras_acabadas)
 
-    print("PALAVRAS:", len(palavras), " E ACHADAS:", len(palavras_acabadas))
-
-    #pprint(dict_palavras)
+    pprint(dict_palavras)
     #atualiza_palavras(dict_palavras, "M",(1,0))
     #pprint(dict_palavras)
     #atualiza_palavras(dict_palavras, "0",(0,1))
