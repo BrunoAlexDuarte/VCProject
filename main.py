@@ -31,13 +31,88 @@ def calibra_camera():
     print("A calibrar a câmera")
 
 
+def dilata(img):
+    #Cria o kernel para a dilatação
+    element_shape = cv2.MORPH_ELLIPSE
+    element_size = 9
+    element = cv2.getStructuringElement(element_shape, (element_size, element_size))
+
+    #Aplica a dilatação N vezes
+    n = 5
+    for i in range(n):
+        img = cv2.dilate(img, element)
+    return img
+
+
+def obtem_zonas_interesse():
+    print("A obter a sopa")
+    img = cv2.imread("SopaDeLetras2.png", cv2.IMREAD_GRAYSCALE)
+    #img = cv2.imread("SopaDeLetras.png", cv2.IMREAD_GRAYSCALE)
+    _, mask =  cv2.threshold(img, 150, 255, cv2.THRESH_BINARY_INV)
+
+    image_dilated = dilata(mask)
+
+    cv2.imshow("IMAGEM", img)
+    cv2.imshow("MASK", image_dilated)
+    cv2.waitKey(0);
+
+    output = cv2.connectedComponentsWithStats(image_dilated, 4, cv2.CV_32S)
+    (total_labels, labels, stats, centroids) = output
+
+    print("CENTROIDS:", centroids)
+    print("STATS:", stats)
+
+    image_dilated = cv2.cvtColor(image_dilated,cv2.COLOR_GRAY2RGB)
+    start_x_max = 0
+    start_y_max = 0
+    width_max = 0
+    height_max = 0
+    area_max = 0
+
+
+    for i in range(1,total_labels):
+        center = (int(centroids[i][0]),int(centroids[i][1]))
+        cv2.circle(image_dilated, center, 5, (255,0,0), -1)
+        start_point_x = stats[i, cv2.CC_STAT_LEFT]
+        start_point_y = stats[i, cv2.CC_STAT_TOP]
+
+        start_point = (start_point_x, start_point_y)
+        width = stats[i, cv2.CC_STAT_WIDTH]
+        height = stats[i,cv2.CC_STAT_HEIGHT]
+
+        end_point = (start_point[0] + width, start_point[1] + height)
+        cv2.rectangle(img, start_point, end_point, (0,255,0), 2)
+        area = stats[i, cv2.CC_STAT_AREA]
+        if area > area_max:
+            area_max = area;
+            start_x_max = start_point_x
+            start_y_max = start_point_y
+            height_max = height
+            width_max = width
+
+
+    sopa = mask[start_y_max: start_y_max + height_max, start_x_max: start_x_max + width_max]
+
+    cv2.imshow("SOPA", sopa)
+    
+    output = cv2.connectedComponentsWithStats(sopa, 4, cv2.CV_32S)
+    (total_labels, labels, stats, centroids) = output
+
+    #print("CENTROIDS:", centroids)
+    #print("STATS:", stats)
+    print("LABELS", total_labels)
+
+    cv2.imshow("IMAGEM", img)
+    cv2.imshow("MASK", image_dilated)
+    cv2.waitKey(0);
+
+
+
 def obtem_sopa():
     #Inicializa a variável de retorno
     sopa = [];
-    print("A obter a sopa")
-    img = cv2.imread("SopaDeLetras.png", cv2.IMREAD_UNCHANGED)
-    cv2.imshow("IMAGEM", img)
-    cv2.waitKey(0);
+
+    obtem_zonas_interesse()
 
     return sopa;
 
@@ -74,7 +149,7 @@ def adiciona_pedidas(letras_dict, palavra, pos_sopa, direcao, sentido, pos_letra
 
     if (not -len(palavra) <= proxima_letra_pos < len(palavra)):
         global palavras_acabadas
-        print("A PALAVRA: ", palavra, " ACABOU AQUI: ", pos_sopa)
+        #print("A PALAVRA: ", palavra, " ACABOU AQUI: ", pos_sopa)
         inicial = (pos_sopa[0]-(len(palavra)-1)*direcao[0], pos_sopa[1]-(len(palavra)-1)*direcao[1])
         palavras_acabadas = palavras_acabadas + [(palavra,inicial, pos_sopa)]
         return
@@ -107,7 +182,6 @@ def atualiza_palavras(palavras_dict, letra, pos_letra):
         if letra == palavra[0]:
             sentido = 1;
             atual_letra_pos = 0;
-
             adiciona_pedidas(letras_pedidas, palavra, pos_letra, frente, sentido, atual_letra_pos)
             adiciona_pedidas(letras_pedidas, palavra, pos_letra, frente_baixo, sentido, atual_letra_pos)
             adiciona_pedidas(letras_pedidas, palavra, pos_letra, baixo, sentido, atual_letra_pos)
@@ -116,13 +190,13 @@ def atualiza_palavras(palavras_dict, letra, pos_letra):
         if letra == palavra[-1]:
             atual_letra_pos = -1
             sentido = -1
-
             adiciona_pedidas(letras_pedidas, palavra, pos_letra, frente, sentido, atual_letra_pos)
             adiciona_pedidas(letras_pedidas, palavra, pos_letra, frente_baixo, sentido, atual_letra_pos)
             adiciona_pedidas(letras_pedidas, palavra, pos_letra, baixo, sentido, atual_letra_pos)
             adiciona_pedidas(letras_pedidas, palavra, pos_letra, baixo_tras, sentido, atual_letra_pos)
 
-def resolve_sopa(sopa, lista_palavras):
+def resolve_sopa(sopas, lista_palavras):
+    global palavras_acabadas
     #Inicializa variável de retorno
     palavras_pos = [];
 
@@ -140,45 +214,12 @@ def resolve_sopa(sopa, lista_palavras):
             letra = sopa[x][y];
             atualiza_palavras(palavras_dict, letra, (x,y));
 
-            #Verifica se a letra adiciona progresso 
-            #Caso sim, marca a proxima letra como passada
-            #Caso não, elimina o progresso daquela letra naquele sentido
-
-
-    
-
-
-    return palavras;
-
+    print(palavras_acabadas)
 
 def testar_funcs():
     global palavas, sopa, palavras_acabadas
-    dict_palavras = inicializa_dicionário(palavras)
-  #  dict_palavras = inicializa_dicionário([
-  #      "FRIDAY", 
-  #      "TUESDAY", 
-  #      "MONDAY", 
-  #      "WEEK",
-  #      "DECEMBER"
-  #      ])
-    print(dict_palavras)
-    for l in range(len(sopa)):
-        for j in range(len(sopa[0])):
-        #print("A LETRA E:", sopa[l][11], " E POS E:", (l,11))
-            atualiza_palavras(dict_palavras, sopa[l][j], (l, j))
-        #atualiza_palavras(dict_palavras, sopa[l][11], (l, 11))
-        #inp = input("QUERES DICIONARIO?:")
-        #if inp == "a":
-        #    pprint(dict_palavras)
-    print("PALAVRAS ACABADAS",palavras_acabadas)
-
-    print("PALAVRAS:", len(palavras), " E ACHADAS:", len(palavras_acabadas))
-
-    #pprint(dict_palavras)
-    #atualiza_palavras(dict_palavras, "M",(1,0))
-    #pprint(dict_palavras)
-    #atualiza_palavras(dict_palavras, "0",(0,1))
-    #pprint(dict_palavras)
+    #resolve_sopa(sopa, palavras)
+    obtem_sopa()
 
 def main():
     print("This is the project")
