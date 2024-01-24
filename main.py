@@ -34,7 +34,7 @@ def calibra_camera():
 def dilata(img):
     #Cria o kernel para a dilatação
     element_shape = cv2.MORPH_ELLIPSE
-    element_size = 9
+    element_size = 7
     element = cv2.getStructuringElement(element_shape, (element_size, element_size))
 
     #Aplica a dilatação N vezes
@@ -43,57 +43,26 @@ def dilata(img):
         img = cv2.dilate(img, element)
     return img
 
-
-def obtem_zonas_interesse():
-    print("A obter a sopa")
-    img = cv2.imread("SopaDeLetras2.png", cv2.IMREAD_GRAYSCALE)
-    #img = cv2.imread("SopaDeLetras.png", cv2.IMREAD_GRAYSCALE)
-    _, mask =  cv2.threshold(img, 150, 255, cv2.THRESH_BINARY_INV)
-
-    image_dilated = dilata(mask)
-
-    cv2.imshow("IMAGEM", img)
-    cv2.imshow("MASK", image_dilated)
-    cv2.waitKey(0);
-
-    output = cv2.connectedComponentsWithStats(image_dilated, 4, cv2.CV_32S)
-    (total_labels, labels, stats, centroids) = output
-
-    print("CENTROIDS:", centroids)
-    print("STATS:", stats)
-
-    image_dilated = cv2.cvtColor(image_dilated,cv2.COLOR_GRAY2RGB)
-    start_x_max = 0
-    start_y_max = 0
-    width_max = 0
-    height_max = 0
-    area_max = 0
+def proximo_par(n):
+    if n % 2 == 0:
+        return n
+    return n+1
 
 
-    for i in range(1,total_labels):
-        center = (int(centroids[i][0]),int(centroids[i][1]))
-        cv2.circle(image_dilated, center, 5, (255,0,0), -1)
-        start_point_x = stats[i, cv2.CC_STAT_LEFT]
-        start_point_y = stats[i, cv2.CC_STAT_TOP]
+def processa_sopa(sopa):
+    element_shape = cv2.MORPH_RECT
+    element_size = 2
+    element = cv2.getStructuringElement(element_shape, (element_size, element_size))
+    sopa2 = cv2.cvtColor(sopa,cv2.COLOR_GRAY2RGB)
+    #Aplica a dilatação N vezes
+    n = 2
+    for i in range(n):
+        sopa = cv2.dilate(sopa, element)
+    #for i in range(n):
+    #    sopa = cv2.erode(sopa, element)
 
-        start_point = (start_point_x, start_point_y)
-        width = stats[i, cv2.CC_STAT_WIDTH]
-        height = stats[i,cv2.CC_STAT_HEIGHT]
-
-        end_point = (start_point[0] + width, start_point[1] + height)
-        cv2.rectangle(img, start_point, end_point, (0,255,0), 2)
-        area = stats[i, cv2.CC_STAT_AREA]
-        if area > area_max:
-            area_max = area;
-            start_x_max = start_point_x
-            start_y_max = start_point_y
-            height_max = height
-            width_max = width
-
-
-    sopa = mask[start_y_max: start_y_max + height_max, start_x_max: start_x_max + width_max]
-
-    cv2.imshow("SOPA", sopa)
+    #sopa = cv2.dilate(sopa, element)
+    cv2.imshow("SOPA2", sopa)
     
     output = cv2.connectedComponentsWithStats(sopa, 4, cv2.CV_32S)
     (total_labels, labels, stats, centroids) = output
@@ -101,10 +70,154 @@ def obtem_zonas_interesse():
     #print("CENTROIDS:", centroids)
     #print("STATS:", stats)
     print("LABELS", total_labels)
+   
+    larg = proximo_par(max(stats[1:,cv2.CC_STAT_WIDTH]))
+    comp = proximo_par(max(stats[1:,cv2.CC_STAT_HEIGHT]))
+
+    print("COMP: ", comp)
+    print("LARG: ", larg)
+
+    cv2.waitKey(0)
+
+
+    for i in range(1, total_labels):
+        start_point_x = stats[i, cv2.CC_STAT_LEFT]
+        start_point_y = stats[i, cv2.CC_STAT_TOP]
+
+        width = stats[i, cv2.CC_STAT_WIDTH]
+        height = stats[i,cv2.CC_STAT_HEIGHT]
+
+        #center = (int(centroids[i][0]),int(centroids[i][1]))
+        #print("CENTER_X: ", center[0], "CENTER_Y: ", center[1])
+        #cv2.circle(sopa2, center, 1, (255,0,255), -1)
+        #if i % 14 == 1: 
+        #cv2.rectangle(sopa, start_point, end_point, (0,255,0), 2)
+        div_int = (larg - width) // 2
+        div_res = (larg - width) % 2
+        if larg - width == 4:
+            div_res = 2
+            div_int = 1
+
+        div_y = comp - height;
+
+        start_point = (start_point_x - div_int - div_res, start_point_y)
+
+        end_point = (start_point[0] + width + div_int, start_point[1] + height + div_y)
+
+        print("START X: ", start_point_x - div_int - div_res, " START_Y: ", start_point_y, "WIDTH: ", width, " AND HEIGHT: ", height, "END_X:", end_point[0]+div_int, "END_Y: ", end_point[1] + div_y)
+
+        letra = sopa[start_point_y: start_point_y + height + div_y, start_point_x - div_int - div_res: start_point_x + width + div_int] 
+        cv2.imshow("LETRA", letra)
+        cv2.imshow("IMG", sopa2)
+        key = cv2.waitKey(0)
+        #if key != " ":
+        #    cv2.imwrite(chr(key) + ".png", letra)
+
+
+def filtrar_zonas_interesse(img, image_dilated):
+    output = cv2.connectedComponentsWithStats(image_dilated, 4, cv2.CV_32S)
+    (total_labels, labels, stats, centroids) = output
+
+    print("CENTROIDS:", centroids)
+    print("STATS:", stats)
+
+    image_dilated2 = cv2.cvtColor(image_dilated,cv2.COLOR_GRAY2RGB)
+
+    #ACHAR O MAIOR AGLOMERADO E FILTRAR
+    ind_max = 1
+    others = []
+    area_max = 0
+    for i in range(2,total_labels):
+        area = stats[i, cv2.CC_STAT_AREA]
+        if area_max > area: 
+            others = others + [ind_max]
+            ind_max = i
+            area_max = area
+        else:
+            others = others + [i]
+
+    sopa_x_i = stats[ind_max, cv2.CC_STAT_LEFT]
+    sopa_y_i = stats[ind_max, cv2.CC_STAT_TOP]
+    
+    sopa_x_f = sopa_x_i + stats[ind_max,cv2.CC_STAT_WIDTH]
+    sopa_y_f = sopa_y_i + stats[ind_max,cv2.CC_STAT_HEIGHT]
+
+    sopa_i = (sopa_x_i, sopa_y_i)
+    sopa_f = (sopa_x_f, sopa_y_f)
+
+    print("OTHERS: ", others)
+
+    cv2.rectangle(img, sopa_i, sopa_f, (0,255,0), 2)
+    cv2.imshow("MASK", img)
+
+    
+    sopa = img[sopa_y_i : sopa_y_f, sopa_x_i: sopa_x_f]
+    cv2.imshow("IMG", sopa)
+    processa_sopa(sopa)
+    #processa_palavras(img, stats, others)
+
+    cv2.waitKey(0)
+    #OS OUTROS TODOS SERAO DAS PALAVRAS CASO ELAS ESTEJAM SEPARADAS
+    
+
+def obtem_zonas_interesse():
+    print("A obter a sopa")
+    img = cv2.imread("SopaDeLetras4.png", cv2.IMREAD_GRAYSCALE)
+    _, mask =  cv2.threshold(img, 120, 255, cv2.THRESH_BINARY_INV)
+    
+    cv2.imshow("MASK_NOT_DILATED", mask)
+
+    image_dilated = dilata(mask)
 
     cv2.imshow("IMAGEM", img)
-    cv2.imshow("MASK", image_dilated)
+    #cv2.imshow("MASK", image_dilated)
     cv2.waitKey(0);
+
+    filtrar_zonas_interesse(mask, image_dilated)
+
+#    output = cv2.connectedComponentsWithStats(image_dilated, 4, cv2.CV_32S)
+ #   (total_labels, labels, stats, centroids) = output
+
+ #   print("CENTROIDS:", centroids)
+ #   print("STATS:", stats)
+
+#    image_dilated = cv2.cvtColor(image_dilated,cv2.COLOR_GRAY2RGB)
+#    start_x_max = 0
+#    start_y_max = 0
+#    width_max = 0
+#    height_max = 0
+#    area_max = 0
+#
+#
+#    for i in range(1,total_labels):
+#        center = (int(centroids[i][0]),int(centroids[i][1]))
+#        cv2.circle(image_dilated, center, 5, (255,0,0), -1)
+#        start_point_x = stats[i, cv2.CC_STAT_LEFT]
+#        start_point_y = stats[i, cv2.CC_STAT_TOP]
+#
+#        start_point = (start_point_x, start_point_y)
+#        width = stats[i, cv2.CC_STAT_WIDTH]
+#        height = stats[i,cv2.CC_STAT_HEIGHT]
+#
+#        end_point = (start_point[0] + width, start_point[1] + height)
+#        cv2.rectangle(img, start_point, end_point, (0,255,0), 2)
+#        area = stats[i, cv2.CC_STAT_AREA]
+#        if area > area_max:
+#            area_max = area;
+#            start_x_max = start_point_x
+#            start_y_max = start_point_y
+#            height_max = height
+#            width_max = width
+#
+#    ################################################################################### 
+#    ################################################################################### 
+#    #A PARTIR DAQUI JÁ TEMOS A SOPA
+#    sopa = mask[start_y_max: start_y_max + height_max, start_x_max: start_x_max + width_max]
+#    #processa_sopa(sopa)
+#
+#    cv2.imshow("IMAGEM", img)
+#    cv2.imshow("MASK", image_dilated)
+#    cv2.waitKey(0);
 
 
 
