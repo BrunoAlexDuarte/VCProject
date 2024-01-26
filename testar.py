@@ -102,7 +102,7 @@ def atualiza_palavras(palavras_dict, letra, pos_letra):
             adiciona_pedidas(letras_pedidas, palavra, pos_letra, baixo_tras, sentido, atual_letra_pos)
 
 
-def testar_funcs():
+def testar_funcs2():
     global palavas, sopa, palavras_acabadas
     dict_palavras = inicializa_dicionário([
         "FRIDAY", 
@@ -127,6 +127,10 @@ def testar_funcs():
     #pprint(dict_palavras)
     #atualiza_palavras(dict_palavras, "0",(0,1))
     #pprint(dict_palavras)
+
+def testar_funcs():
+
+
 
 def main():
     print("This is the project")
