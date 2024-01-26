@@ -23,10 +23,30 @@ sopa = [["A","A","C","N","T","Y","F","R","I","D","A","Y","Y","Y"],
        ];
 
 
-sopa2 = [['F', 'N', 'X', 'G', 'L', 'K', 'Q', 'S', 'P', 'K', 'C', 'R', 'E', 'X', 'V', 'L', 'E', 'B', 'I', 'C', 'E', 'D', 'V', 'G'], ['U', 'N', 'O', 'D', 'O', 'O', 'Y', 'A', 'R', 'K', 'N', 'M', 'G', 'V', 'E', 'F', 'X', 'K', 'Q', 'V', 'L', 'M', 'N', 'Q'], ['K', 'F', 'W', 'I', 'Q', 'Y', 'J', 'I', 'X', 'U', 'E', 'W', 'I', 'B', 'T', 'B', 'D', 'A', 'I', 'X', 'S', 'P', 'U', 'W'], ['N', 'M', 'M', 'J', 'T', 'O', 'R', 'S', 'B', 'l', 'K', 'G', 'C', 'E', 'H', 'T', 'X', 'Y', 'W', 'P', 'S', 'G', 'P', 'V'], ['S', 'E', 'K', 'K', 'W', 'A', 'E', 'R', 'W', 'Z', 'E', 'S', 'C', 'Z', 'l', 'W', 'Q', 'I', 'B', 'T', 'W', 'J', 'M', 'U'], ['X', 'A', 'S', 'Y', 'P', 'C', 'C', 'M', 'H', 'D', 'X', 'C', 'O', 'K', 'P', 'F', 'T', 'N', 'C', 'O', 'O', 'X', 'Y', 'N'], ['A', 'R', 'B', 'R', 'M', 'G', 'H', 'O', 'R', 'A', 'L', 'U', 'C', 'I', 'D', 'N', 'E', 'P', 'R', 'E', 'P', 'C', 'K', 'D'], ['M', 'K', 'N', 'O', 'I', 'T', 'C', 'E', 'L', 'F', 'E', 'R', 'K', 'Q', 'Q', 'G', 'D', 'G', 'R', 'Y', 'M', 'W', 'W', 'N'], ['P', 'X', 'R', 'C', 'O', 'M', 'T', 'L', 'D', 'O', 'F', 'H', 'S', 'S', 'G', 'V', 'X', 'E', 'Q', 'B', 'X', 'l', 'D', 'O'], ['L', 'T', 'W', 'I', 'Z', 'F', 'X', 'F', 'A', 'Y', 'H', 'F', 'F', 'F', 'V', 'N', 'M', 'C', 'P', 'X', 'E', 'Y', 'S', 'I'], ['I', 'X', 'L', 'I', 'T', 'D', 'N', 'M', 'M', 'O', 'J', 'C', 'G', 'H', 'l', 'O', 'G', 'R', 'N', 'Z', 'H', 'V', 'O', 'T'], ['T', 'Z', 'T', 'T', 'R', 'R', 'U', 'L', 'W', 'E', 'Z', 'D', 'E', 'B', 'C', 'l', 'V', 'B', 'S', 'A', 'Q', 'F', 'U', 'C'], ['U', 'O', 'J', 'A', 'E', 'D', 'H', 'Z', 'W', 'A', 'W', 'Q', 'W', 'T', 'Z', 'S', 'Q', 'Z', 'U', 'Y', 'B', 'T', 'N', 'A'], ['D', 'U', 'R', 'V', 'H', 'O', 'F', 'D', 'R', 'L', 'Q', 'Y', 'W', 'G', 'R', 'N', 'N', 'U', 'X', 'R', 'W', 'D', 'R', 'A'], ['E', 'O', 'F', 'B', 'H', 'D', 'T', 'E', 'L', 'U', 'I', 'F', 'E', 'Q', 'C', 'E', 'M', 'O', 'E', 'F', 'R', 'H', 'V', 'F'], ['K', 'F', 'E', 'F', 'H', 'I', 'G', 'R', 'O', 'A', 'G', 'R', 'P', 'B', 'A', 'P', 'Y', 'F', 'A', 'P', 'X', 'W', 'P', 'E'], ['R', 'B', 'V', 'J', 'M', 'I', 'X', 'C', 'L', 'Z', 'K', 'E', 'V', 'P', 'Z', 'S', 'Y', 'N', 'T', 'Q', 'C', 'M', 'G', 'R'], ['X', 'Z', 'G', 'L', 'A', 'I', 'N', 'L', 'R', 'P', 'B', 'Q', 'P', 'Q', 'E', 'l', 'Q', 'K', 'Z', 'Q', 'L', 'l', 'Q', 'H'], ['B', 'M', 'V', 'Z', 'Q', 'I', 'G', 'U', 'L', 'R', 'D', 'U', 'X', 'D', 'H', 'D', 'A', 'X', 'H', 'M', 'H', 'A', 'Q', 'K'], ['W', 'A', 'G', 'R', 'T', 'P', 'Z', 'G', 'R', 'O', 'A', 'E', 'U', 'J', 'R', 'C', 'O', 'F', 'D', 'O', 'Z', 'E', 'U', 'D'], ['W', 'R', 'R', 'Z', 'L', 'E', 'B', 'W', 'G', 'M', 'P', 'N', 'G', 'M', 'N', 'S', 'T', 'N', 'L', 'I', 'Q', 'D', 'J', 'E'], ['Z', 'U', 'F', 'Q', 'I', 'U', 'Z', 'P', 'E', 'U', 'L', 'C', 'G', 'Q', 'U', 'C', 'F', 'I', 'Q', 'L', 'O', 'X', 'R', 'F'], ['R', 'Q', 'T', 'Y', 'W', 'T', 'J', 'K', 'W', 'l', 'E', 'Y', 'L', 'E', 'K', 'J', 'N', 'P', 'P', 'M', 'L', 'Q', 'X', 'J'], ['T', 'S', 'O', 'N', 'R', 'V', 'F', 'G', 'K', 'D', 'I', 'F', 'F', 'R', 'A', 'C', 'T', 'I', 'O', 'N', 'l', 'S', 'J', 'A']];
-
-
-
+sopa2 = [['F', 'N', 'X', 'G', 'L', 'K', 'Q', 'S', 'P', 'K', 'C', 'R', 'E', 'X', 'V', 'L', 'E', 'B', 'I', 'C', 'E', 'D', 'V', 'G'],
+         ['U', 'N', 'O', 'D', 'O', 'O', 'Y', 'A', 'R', 'K', 'N', 'M', 'G', 'V', 'E', 'F', 'X', 'K', 'Q', 'V', 'L', 'M', 'N', 'Q'],
+         ['K', 'F', 'W', 'I', 'Q', 'Y', 'J', 'I', 'X', 'U', 'E', 'W', 'I', 'B', 'T', 'B', 'D', 'A', 'I', 'X', 'S', 'P', 'U', 'W'],
+         ['N', 'M', 'M', 'J', 'T', 'O', 'R', 'S', 'B', 'I', 'K', 'G', 'C', 'E', 'H', 'T', 'X', 'Y', 'W', 'P', 'S', 'G', 'P', 'V'],
+         ['S', 'E', 'K', 'K', 'W', 'A', 'E', 'R', 'W', 'Z', 'E', 'S', 'C', 'Z', 'I', 'W', 'Q', 'I', 'B', 'T', 'W', 'J', 'M', 'U'],
+         ['X', 'A', 'S', 'Y', 'P', 'C', 'C', 'M', 'H', 'D', 'X', 'C', 'O', 'K', 'P', 'F', 'T', 'N', 'C', 'O', 'O', 'X', 'Y', 'N'],
+         ['A', 'R', 'B', 'R', 'M', 'G', 'H', 'O', 'R', 'A', 'L', 'U', 'C', 'I', 'D', 'N', 'E', 'P', 'R', 'E', 'P', 'C', 'K', 'D'],
+         ['M', 'K', 'N', 'O', 'I', 'T', 'C', 'E', 'L', 'F', 'E', 'R', 'K', 'Q', 'Q', 'G', 'D', 'G', 'R', 'Y', 'M', 'W', 'W', 'N'],
+         ['P', 'X', 'R', 'C', 'O', 'M', 'T', 'L', 'D', 'O', 'F', 'H', 'S', 'S', 'G', 'V', 'X', 'E', 'Q', 'B', 'X', 'I', 'D', 'O'],
+         ['L', 'T', 'W', 'I', 'Z', 'F', 'X', 'F', 'A', 'Y', 'H', 'F', 'F', 'F', 'V', 'N', 'M', 'C', 'P', 'X', 'E', 'Y', 'S', 'I'],
+         ['I', 'X', 'L', 'I', 'T', 'D', 'N', 'M', 'M', 'O', 'J', 'C', 'G', 'H', 'I', 'O', 'G', 'R', 'N', 'Z', 'H', 'V', 'O', 'T'],
+         ['T', 'Z', 'T', 'T', 'R', 'R', 'U', 'L', 'W', 'E', 'Z', 'D', 'E', 'B', 'C', 'I', 'V', 'B', 'S', 'A', 'Q', 'F', 'U', 'C'],
+         ['U', 'O', 'J', 'A', 'E', 'D', 'H', 'Z', 'W', 'A', 'W', 'Q', 'W', 'T', 'Z', 'S', 'Q', 'Z', 'U', 'Y', 'B', 'T', 'N', 'A'],
+         ['D', 'U', 'R', 'V', 'H', 'O', 'F', 'D', 'R', 'L', 'Q', 'A', 'Y', 'W', 'G', 'R', 'N', 'N', 'U', 'X', 'R', 'W', 'D', 'R'],
+         ['E', 'O', 'F', 'B', 'H', 'D', 'T', 'E', 'L', 'U', 'I', 'F', 'E', 'Q', 'C', 'E', 'M', 'O', 'E', 'F', 'R', 'H', 'V', 'F'],
+         ['K', 'F', 'E', 'F', 'H', 'I', 'G', 'R', 'O', 'A', 'G', 'R', 'P', 'B', 'A', 'P', 'Y', 'F', 'A', 'P', 'X', 'W', 'P', 'E'],
+         ['R', 'B', 'V', 'J', 'M', 'I', 'X', 'C', 'L', 'Z', 'K', 'E', 'V', 'P', 'Z', 'S', 'Y', 'N', 'T', 'Q', 'C', 'M', 'G', 'R'],
+         ['X', 'Z', 'G', 'L', 'A', 'I', 'N', 'L', 'R', 'P', 'B', 'Q', 'P', 'Q', 'E', 'I', 'Q', 'K', 'Z', 'Q', 'L', 'I', 'Q', 'H'],
+         ['B', 'M', 'V', 'Z', 'Q', 'I', 'G', 'U', 'L', 'R', 'D', 'U', 'X', 'D', 'H', 'D', 'A', 'X', 'H', 'M', 'H', 'A', 'Q', 'K'],
+         ['W', 'A', 'G', 'R', 'T', 'P', 'Z', 'G', 'R', 'O', 'A', 'E', 'U', 'J', 'R', 'C', 'O', 'F', 'D', 'O', 'Z', 'E', 'U', 'D'],
+         ['W', 'R', 'R', 'Z', 'L', 'E', 'B', 'W', 'G', 'M', 'P', 'N', 'G', 'M', 'N', 'S', 'T', 'N', 'L', 'I', 'Q', 'D', 'J', 'E'],
+         ['Z', 'U', 'F', 'Q', 'I', 'U', 'Z', 'P', 'E', 'U', 'L', 'C', 'G', 'Q', 'U', 'C', 'F', 'I', 'Q', 'L', 'O', 'X', 'R', 'F'],
+         ['R', 'Q', 'T', 'Y', 'W', 'T', 'J', 'K', 'W', 'I', 'E', 'Y', 'L', 'E', 'K', 'J', 'N', 'P', 'P', 'M', 'L', 'Q', 'X', 'J'],
+         ['T', 'S', 'O', 'N', 'A', 'R', 'V', 'F', 'G', 'K', 'D', 'I', 'F', 'F', 'R', 'A', 'C', 'T', 'I', 'O', 'N', 'I', 'S', 'J']];
 
 palavras = ["WEDNESDAY","DAYS","MONDAY","JANUARY","AUGUST","WINTER","AUTUMN","THURSDAY",
             "MARCH","OCTOBER","MAY","APRIL","FRIDAY","TUESDAY","SUNDAY","MONTHS","YEAR",
@@ -36,9 +56,7 @@ palavras2 = ['DISPERSION', 'HERTZ', 'EAR', 'SONAR', 'RANGE', 'PERPENDICULAR', 'R
 
 
 palavras_acabadas = [];
-
-def calibra_camera():
-    print("A calibrar a câmera")
+lim = 24
 
 
 def dilata(img):
@@ -61,14 +79,11 @@ def proximo_par(n):
 
 def processa_palavras(img, stats, inds):
     
-    #img2 = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
-    print(inds)
     palavras = []
     palavras_res = []
 
     for i in inds:
         cada_lista = []
-        print("XZONA")
         corte_x_i = stats[i, cv2.CC_STAT_LEFT]
         corte_y_i = stats[i, cv2.CC_STAT_TOP]
         
@@ -79,8 +94,6 @@ def processa_palavras(img, stats, inds):
         corte_f = (corte_x_f, corte_y_f)
 
         corte = img[corte_y_i : corte_y_f, corte_x_i: corte_x_f]   
-        #cv2.imshow("IMG", corte)
-        #cv2.waitKey(0)
         cada_lista = processa_zona(corte, False)
         palavras = palavras + cada_lista
 
@@ -90,20 +103,15 @@ def processa_palavras(img, stats, inds):
     return palavras_res
 
 def processa_zona(zona, is_sopa):
-    #zona = cv2.cvtColor(zona,cv2.COLOR_RGB2GRAY)
 
     output = cv2.connectedComponentsWithStats(zona, 4, cv2.CV_32S)
     (total_labels, labels, stats, centroids) = output
 
-    print("LABELS", total_labels)
    
     larg = proximo_par(max(stats[1:,cv2.CC_STAT_WIDTH]))
     comp = proximo_par(max(stats[1:,cv2.CC_STAT_HEIGHT]))
 
-    print("COMP: ", comp)
-    print("LARG: ", larg)
 
-    #cv2.waitKey(0)
     anterior = 0
     lista = []
     
@@ -119,8 +127,6 @@ def processa_zona(zona, is_sopa):
             start_point = (start_point_x - 2, start_point_y - 2)
             end_point = (start_point_x + width + 2, start_point_y + comp + 2)
 
-            #print("START_POIMT:", start_point, " END POINT:", end_point)
-
             letra = zona[start_point[1]: end_point[1], start_point[0]: end_point[0]] 
             letra = cv2.bitwise_not(letra)
 
@@ -128,12 +134,10 @@ def processa_zona(zona, is_sopa):
             letra_char = letra_char[0]
             if letra_char == '0':
                 letra_char = 'O'
-            elif letra_char == '\x0c':
+            elif letra_char == '\x0c' or letra_char == 'l':
                 letra_char = 'I'
-            #print("A LETRA È:", letra_char)
 
             if abs(anterior - start_point[1]) > 10: #começou uma nova linha
-                #print("NOVA LINHA")
                 lista = lista + [lista_pre]
                 lista_pre = [letra_char]
             else:
@@ -142,7 +146,6 @@ def processa_zona(zona, is_sopa):
         lista = lista + [lista_pre]
         return lista[1:]
     else:
-        #print(stats)
         for i in range(1, total_labels):
             start_point_x = stats[i, cv2.CC_STAT_LEFT]
             start_point_y = stats[i, cv2.CC_STAT_TOP]
@@ -153,23 +156,18 @@ def processa_zona(zona, is_sopa):
             start_point = (start_point_x - 2, start_point_y - 2)
             end_point = (start_point_x + width + 2, start_point_y + comp + 2)
 
-    #        print("START_POIMT:", start_point, " END POINT:", end_point)
 
             letra = zona[start_point[1]: end_point[1], start_point[0]: end_point[0]] 
             letra = cv2.bitwise_not(letra)
-            #cv2.imshow("LETRA", letra)
-            #cv2.waitKey(0)
 
             letra_char = find_letra2(letra)
             letra_char = letra_char[0]
             if letra_char == '0':
                 letra_char = 'O'
-            elif letra_char == '\x0c':
+            elif letra_char == '\x0c' or letra_char == 'l':
                 letra_char = 'I'
-            #print("A LETRA È:", letra_char)
 
             if abs(anterior - start_point[1]) > 20: #começou uma nova linha
-   #             print("ACABOU A PALAVRA", lista_pre)
                 lista = lista + [lista_pre]
                 lista_pre = [letra_char]
             else:
@@ -204,12 +202,8 @@ def filtrar_zonas_interesse(img, image_dilated):
     output = cv2.connectedComponentsWithStats(image_dilated, 4, cv2.CV_32S)
     (total_labels, labels, stats, centroids) = output
 
-    print("CENTROIDS:", centroids)
-    print("STATS:", stats)
-
     image_dilated2 = cv2.cvtColor(image_dilated,cv2.COLOR_GRAY2RGB)
 
-    #ACHAR O MAIOR AGLOMERADO E FILTRAR
     ind_max = 1
     others = []
     area_max = 0
@@ -230,45 +224,25 @@ def filtrar_zonas_interesse(img, image_dilated):
 
     sopa_i = (sopa_x_i, sopa_y_i)
     sopa_f = (sopa_x_f, sopa_y_f)
-
-    print("OTHERS: ", others)
-
-    cv2.rectangle(img, sopa_i, sopa_f, (0,255,0), 2)
     
     sopa = img[sopa_y_i : sopa_y_f, sopa_x_i: sopa_x_f]
     sopa_letras = processa_zona(sopa, True)
-    print(sopa_letras)
-    print(sopa_letras)
-    print("TAMANHOS DA SOPA")
-    print(len(sopa_letras))
-    for i in range(len(sopa_letras)):
-        print(len(sopa_letras[i]))
     palavras = processa_palavras(img, stats, others)
-    print(palavras)
+    global lim
+    lim = len(sopa_letras)
     resolve_sopa(sopa_letras, palavras)
 
 def obtem_zonas_interesse():
     print("A obter a sopa")
     img = cv2.imread("SopaDeLetras5.png", cv2.IMREAD_GRAYSCALE)
+    cv2.imshow("SOPA", img)
     _, mask =  cv2.threshold(img, 120, 255, cv2.THRESH_BINARY_INV)
-    
-    #cv2.imshow("MASK_NOT_DILATED", mask)
-
     image_dilated = dilata(mask)
-
-    cv2.imshow("IMAGEM", img)
-    #cv2.imshow("MASK", image_dilated)
-    #cv2.waitKey(0);
-
     filtrar_zonas_interesse(mask, image_dilated)
-
-#
 
 def obtem_sopa():
     #Inicializa a variável de retorno
     sopa = [];
-
-    obtem_zonas_interesse()
 
     return sopa;
 
@@ -281,8 +255,6 @@ def inicializa_dicionário(palavras):
      #Entre as letras das quais estamos à procura e em qual posição do tabuleiro e da palavra estão
     for palavra in palavras:
         pal_size = len(palavra);
-
-
         #Terei um dicionario com as letras que quero
         #Correspondente a cada letra terei a palavra que quer a letra, a posicao na palavra, 
         #E a direção na qual a palavra está a ir (frente, baixo tras, baixo, frente baixo), bem como se é pelo sentido normal ou ao contrário
@@ -299,13 +271,12 @@ def adiciona_pedidas(letras_dict, palavra, pos_sopa, direcao, sentido, pos_letra
     #Palavra -> palavra que queremos    #Pos sopa -> posicao da sopa onde estamos
     #Direcao -> direcao da palavra      #Sentido -> sentido da palavra
     #Pos letra -> posicao da letra na palavra
-    lim = 14;
+    global lim
     proxima_sopa_pos = (pos_sopa[0]+direcao[0], pos_sopa[1]+direcao[1]);
     proxima_letra_pos = pos_letra + sentido;
 
     if (not -len(palavra) <= proxima_letra_pos < len(palavra)):
         global palavras_acabadas
-        #print("A PALAVRA: ", palavra, " ACABOU AQUI: ", pos_sopa)
         inicial = (pos_sopa[0]-(len(palavra)-1)*direcao[0], pos_sopa[1]-(len(palavra)-1)*direcao[1])
         palavras_acabadas = palavras_acabadas + [(palavra,inicial, pos_sopa)]
         return
@@ -363,36 +334,23 @@ def resolve_sopa(sopas, lista_palavras):
     #Inicializar variáveis que serão usadas
      #Adicionamos ao dicionário as palavras
     palavras_dict = inicializa_dicionário(lista_palavras)
-
     #Loop para passarmos por todas as letras
     for x in range(cols):
         for y in range(linhas):
-            print("X: ", x, " E Y:", y)
             letra = sopas[x][y];
             atualiza_palavras(palavras_dict, letra, (x,y));
-    print(palavras_dict)
+            #a = input("CONTINUE")
     print(palavras_acabadas)
 
 def testar_funcs():
     global palavas2, sopa2, palavras_acabadas
-    resolve_sopa(sopa2, palavras2)
-    #obtem_sopa()
+    #resolve_sopa(sopa2, palavras2)
+    obtem_zonas_interesse()
 
 def main():
-
-
     print("This is the project")
-    testar_funcs()
-    #print(sopa)
-    #print(palavras)
-
-    #Carregar os parâmetros da câmara ou obter uns novos
-    #Obter as imagens
-    #Obter a sopa
-    #Resolver a sopa
-    #Dar print das posições
-    #Eventualmente colocar em live o vídeo
-
+    #testar_funcs()
+    obtem_zonas_interesse()
 
 if __name__ == "__main__":
     main()
